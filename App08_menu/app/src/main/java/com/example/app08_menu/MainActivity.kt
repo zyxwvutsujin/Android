@@ -2,6 +2,7 @@ package com.example.app08_menu
 
 import android.os.Bundle
 import android.view.Menu
+import android.widget.SearchView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -23,7 +24,21 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
     }
 
+    // menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_test, menu)
+        val menuItem = menu?.findItem(R.id.menu3)
+        val searchView = menuItem?.actionView as SearchView
+        searchView.setOnQueryTextListener(object:SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                return true
+            }
+
+        })
         return super.onCreateOptionsMenu(menu)
     }
 }
